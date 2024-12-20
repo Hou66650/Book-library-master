@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %} 修改书目信息 {% endblock %}
+
+{% block link %}
+    <div style="text-align: center; margin-bottom: 20px;">
+        {% if book %}
+        <a href="{{ url_for('manager_book', id=book.book_id) }}" style="text-decoration: none; color: #fff; font-size: 16px; padding: 5px 10px; border: 1px solid #e9e9e9; border-radius: 5px; transition: background 0.3s;">返回</a>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #f9f7ff; border-radius: 10px; box-shadow: 0 4px 10px rgba(123, 104, 238, 0.2);">
+        <h2 style="text-align: center; color: #7B68EE; font-size: 28px; margin-bottom: 20px;">修改书目信息</h2>
+
+        {% if error %}
+        <div style="background: #ffc0cb; color: #d63031; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+            <strong>错误：</strong> {{ error }}
+        </div>
+        {% endif %}
+
+        {% if book %}
+        <form action="" method="post" style="display: flex; flex-direction: column; align-items: center;">
+            <dl style="width: 100%;">
+                <dt style="margin-bottom: 10px; color: #7B68EE; font-size: 18px;">书名:</dt>
+                <dd style="margin-bottom: 20px;">
+                    <input type="text" name="name" size="30" value="{{ book.book_name }}" style="width: 100%; padding: 10px; border: 1px solid #7B68EE; border-radius: 5px; font-size: 16px; outline: none; transition: border-color 0.3s;">
+                </dd>
+
+                <dt style="margin-bottom: 10px; color: #7B68EE; font-size: 18px;">作者:</dt>
+                <dd style="margin-bottom: 20px;">
+                    <input type="text" name="author" size="30" value="{{ book.author }}" style="width: 100%; padding: 10px; border: 1px solid #7B68EE; border-radius: 5px; font-size: 16px; outline: none; transition: border-color 0.3s;">
+                </dd>
+
+                <dt style="margin-bottom: 10px; color: #7B68EE; font-size: 18px;">出版社:</dt>
+                <dd style="margin-bottom: 20px;">
+                    <input type="text" name="company" size="30" value="{{ book.publish_com }}" style="width: 100%; padding: 10px; border: 1px solid #7B68EE; border-radius: 5px; font-size: 16px; outline: none; transition: border-color 0.3s;">
+                </dd>
+
+                <dt style="margin-bottom: 10px; color: #7B68EE; font-size: 18px;">出版日期:</dt>
+                <dd style="margin-bottom: 20px;">
+                    <input type="text" name="date" size="30" value="{{ book.publish_date }}" style="width: 100%; padding: 10px; border: 1px solid #7B68EE; border-radius: 5px; font-size: 16px; outline: none; transition: border-color 0.3s;">
+                </dd>
+            </dl>
+
+            <div class="actions" style="margin-top: 20px;">
+                <input type="submit" value="修改" style="background: #7B68EE; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background 0.3s;">
+            </div>
+        </form>
+        {% endif %}
+    </div>
+{% endblock %}

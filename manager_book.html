@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %} 图书主页 {% endblock %}
+
+{% block link %}
+    <div style="margin: 10px 0; text-align: center;">
+        <a href="{{ url_for('manager_books') }}" style="text-decoration: none; color: #fff; margin-right: 15px;">返回</a>
+        {% if book %}
+        <a href="{{ url_for('manager_modify', id=book.book_id) }}" style="text-decoration: none; color: #fff;">修改</a>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div style="max-width: 800px; margin: 20px auto; padding: 20px; background: #f9f7ff; border-radius: 10px; box-shadow: 0 4px 10px rgba(123, 104, 238, 0.2);">
+        <h2 style="text-align: center; color: #7B68EE; font-size: 28px; margin-bottom: 20px;">图书信息</h2>
+        {% if book %}
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 15px; font-size: 16px; color: #555;">
+                <span style="display: inline-block; width: 120px; font-weight: bold; color: #7B68EE;">ISBN:</span>
+                {{ book.book_id }}
+            </li>
+            <li style="margin-bottom: 15px; font-size: 16px; color: #555;">
+                <span style="display: inline-block; width: 120px; font-weight: bold; color: #7B68EE;">书名:</span>
+                {{ book.book_name }}
+            </li>
+            <li style="margin-bottom: 15px; font-size: 16px; color: #555;">
+                <span style="display: inline-block; width: 120px; font-weight: bold; color: #7B68EE;">作者:</span>
+                {{ book.author }}
+            </li>
+            <li style="margin-bottom: 15px; font-size: 16px; color: #555;">
+                <span style="display: inline-block; width: 120px; font-weight: bold; color: #7B68EE;">出版社:</span>
+                {{ book.publish_com }}
+            </li>
+            <li style="margin-bottom: 15px; font-size: 16px; color: #555;">
+                <span style="display: inline-block; width: 120px; font-weight: bold; color: #7B68EE;">出版日期:</span>
+                {{ book.publish_date }}
+            </li>
+        </ul>
+        {% endif %}
+
+        <h2 style="text-align: center; color: #7B68EE; font-size: 28px; margin-top: 30px; margin-bottom: 20px;">借阅信息</h2>
+        {% if reader %}
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 15px; font-size: 16px; color: #555;">
+                <span style="display: inline-block; width: 120px; font-weight: bold; color: #7B68EE;">借阅者姓名:</span>
+                {{ reader.user_name }}
+            </li>
+            <li style="margin-bottom: 15px; font-size: 16px; color: #555;">
+                <span style="display: inline-block; width: 120px; font-weight: bold; color: #7B68EE;">借阅日期:</span>
+                {{ reader.date_borrow }}
+            </li>
+            <li style="margin-bottom: 15px; font-size: 16px; color: #555;">
+                <span style="display: inline-block; width: 120px; font-weight: bold; color: #7B68EE;">还书日期:</span>
+                {{ reader.date_return }}
+            </li>
+        </ul>
+        <form action="" method="post" style="text-align: center; margin-top: 20px;">
+            <div class="actions">
+                <input type="submit" value="归还" style="background: #7B68EE; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background 0.3s;">
+            </div>
+        </form>
+        {% else %}
+        <p style="text-align: center; font-size: 16px; color: #7B68EE; font-weight: bold;">无借阅信息</p>
+        {% endif %}
+    </div>
+{% endblock %}

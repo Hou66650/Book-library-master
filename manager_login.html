@@ -1,0 +1,136 @@
+{#{% extends "layout.html" %}#}
+{% block title %} 管理员登录 {% endblock %}
+
+{% block link %}
+<div class="nav-links">
+    <a href="{{ url_for('index') }}">返回</a>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="login-container">
+    <h2>管理员登录</h2>
+    {% if error %}
+    <div class="error">
+        <strong>错误:</strong> {{ error }}
+    </div>
+    {% endif %}
+    <form action="" method="post">
+        <dl>
+            <dt>用户名:</dt>
+            <dd><input type="text" name="user_id" size="30" placeholder="输入用户名"></dd>
+            <dt>密码:</dt>
+            <dd><input type="password" name="password" size="30" placeholder="输入密码"></dd>
+        </dl>
+        <div class="actions">
+            <input type="submit" value="登录">
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #8A2BE2, #D8BFD8);
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+    }
+
+    .nav-links {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .nav-links a {
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 0 15px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #8A2BE2;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+        background-color: #6A5ACD;
+        transform: scale(1.1);
+    }
+
+    .login-container {
+        background: #FFFFFF;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        text-align: center;
+    }
+
+    .login-container h2 {
+        color: #8A2BE2;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .login-container .error {
+        color: #FF4500;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .login-container dl {
+        text-align: left;
+    }
+
+    .login-container dt {
+        font-size: 18px;
+        color: #8A2BE2;
+        margin-bottom: 5px;
+    }
+
+    .login-container dd {
+        margin-bottom: 15px;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+
+    .login-container input[type="text"]:focus,
+    .login-container input[type="password"]:focus {
+        border-color: #8A2BE2;
+    }
+
+    .login-container .actions {
+        text-align: center;
+    }
+
+    .login-container input[type="submit"] {
+        background-color: #8A2BE2;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .login-container input[type="submit"]:hover {
+        background-color: #6A5ACD;
+        transform: scale(1.1);
+    }
+</style>
+{% endblock %}

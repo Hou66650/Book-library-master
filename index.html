@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}主页{% endblock %}
+{% block link %}
+  <a href="{{ url_for('manager_login')}}">管理员登录</a> |
+  <a href="{{ url_for('reader_login')}}">读者登录</a> |
+{% endblock %}
+
+
+{% block body %}
+  <div class="welcome-container">
+    <h2>欢迎使用 上海理工大学图书管理系统</h2>
+    <p>体验前所未有的便捷和高效。</p>
+    <div class="features">
+      <div class="feature" onclick="window.location.href='/manager_login';">
+        <img src="{{ url_for('static', filename='images/1.jpg') }}" alt="Icon 1">
+        <h3>简单易用</h3>
+          <a class="login">管理员登陆</a>
+        <p>简洁的界面设计，轻松上手。</p>
+      </div>
+      <div class="feature" onclick="window.location.href='/reader_login';">
+        <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="Icon 2">
+        <h3>高效管理</h3>
+          <a class="login">读者登录</a>
+        <p>强大的管理功能，提升工作效率。</p>
+      </div>
+      <div class="feature" onclick="window.location.href='/register_admin';">
+        <img src="{{ url_for('static', filename='images/3.jpg') }}" alt="Icon 3">
+        <h3>安全可靠</h3>
+          <a class="login" >管理员注册</a>
+        <p>多重安全机制，保护您的数据。</p>
+      </div>
+    </div>
+  </div>
+  <div class="recommendation">
+    <h3 class="login">图书推荐</h3>
+      {% for books in books_p[:3] %}
+            <img src="data:image/jpeg;base64,{{books.image_data}}" alt="{{ books.book_name }}" width="200" height="300">
+      {% endfor %}
+{#    <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="图书2" width="1200" height="1300">#}
+{#    <img src="{{ url_for('static', filename='images/3.jpg') }}" alt="图书3" width="1200" height="1300">#}
+</div>
+{% endblock %}

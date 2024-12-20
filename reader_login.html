@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读者登录</title>
+{#    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">#}
+</head>
+<body>
+<div class="container">
+    <div class="nav-links">
+        <a href="{{ url_for('index') }}">返回</a>
+        <a href="{{ url_for('register') }}">注册</a>
+    </div><div class="page">
+    <h2>读者登录</h2>
+    {% if error %}
+    <div class="error">
+        <strong>错误: </strong> {{ error }}
+    </div>
+    {% endif %}
+    <form action="" method="post">
+        <dl>
+            <dt>用户名:</dt>
+            <dd><input type="text" name="username" size="30" value="{{ request.form.username }}"></dd>
+            <dt>密码:</dt>
+            <dd><input type="password" name="password" size="30"></dd>
+        </dl>
+        <div class="actions">
+            <input type="submit" value="登录">
+        </div>
+    </form>
+</div>
+</div>
+</body>
+<style>
+    body {
+        font-family: 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background: linear-gradient(135deg, #8a2be2, #dda0dd); /* 紫色渐变背景 */
+        color: #1d1d1f;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .page {
+        max-width: 400px;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.8s ease;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: #8a2be2; /* 紫色 */
+        text-align: center;
+    }
+
+    .error {
+        background: #ffeded;
+        color: #d9534f;
+        padding: 0.75rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        border: 1px solid #d9534f;
+    }
+
+    dl {
+        margin: 0;
+        padding: 0;
+    }
+
+    dt {
+        font-size: 1rem;
+        color: #525255;
+        margin-bottom: 0.5rem;
+    }
+
+    dd {
+        margin: 0 0 1rem 0;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        border-color: #8a2be2; /* 紫色 */
+        box-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
+    }
+
+    .actions {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+
+    input[type="submit"] {
+        background-color: #8a2be2; /* 紫色 */
+        color: #fff;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #dda0dd; /* 浅紫色 */
+        transform: scale(1.05);
+    }
+
+/* 导航栏样式 */
+.nav-links {
+    position: relative; /* 确保导航栏在页面顶部 */
+    z-index: 10; /* 确保导航栏在其他内容之上 */
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    padding: 1rem 0;
+    background-color: #f5f5f7; /* 浅灰色背景 */
+    border-bottom: 1px solid #ddd; /* 底部边框 */
+    width: 100%;
+}
+
+.nav-links a {
+    color: #8a2be2; /* 紫色链接 */
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0 1rem; /* 链接之间的间距 */
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #dda0dd; /* 浅紫色，鼠标悬停效果 */
+}
+
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</html>

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %} 注册 {% endblock %}
+
+{% block link %}
+	<a href="{{ url_for('reader_login')}}"> 返回 </a>
+{% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+
+{% block body %}
+<div class="container">
+	{% if error %}
+	<div class="error">
+		<strong>错误: </strong> {{ error }}
+	</div>
+	{% endif %}
+	<div class="page">
+		<h2>用户注册</h2>
+		<form action="" method="post">
+			<dl>
+				<dt>用户名:</dt>
+				<dd><input type="text" name="username" size="30" value="{{ request.form.username }}" autocomplete="username" required></dd>
+				<dt>密码:</dt>
+				<dd><input type="password" name="password" size="30" autocomplete="new-password" required></dd>
+				<dt>密码<small>(重复)</small>:</dt>
+				<dd><input type="password" name="password2" size="30" autocomplete="new-password" required></dd>
+				<dt>学院:</dt>
+				<dd><input type="text" name="college" size="30" autocomplete="organization" required></dd>
+				<dt>学号:</dt>
+				<dd><input type="text" name="number" size="30" autocomplete="student-id" required></dd>
+				<dt>邮箱:</dt>
+				<dd><input type="email" name="email" size="30" autocomplete="email" required></dd>
+			</dl>
+			<div class="actions">
+				<input type="submit" value="注册">
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

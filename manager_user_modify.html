@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %} 用户信息修改 {% endblock %}
+
+{% block link %}
+    <a href="{{ url_for('manager_user', id=user.user_id) }}"> 返回 </a>
+{% endblock %}
+
+{% block body %}
+    {% if error %}
+    <div class="error" style="color: red; font-weight: bold;">
+        <strong>错误 : </strong> {{ error }}
+    </div>
+    {% endif %}
+
+    <form action="" method="post" style="max-width: 400px; margin: 20px auto; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;">
+        <dl style="list-style: none; padding: 0;">
+            <dt style="font-weight: bold; margin-bottom: 5px;">用户名:</dt>
+            <dd style="margin-bottom: 15px;">
+                <input type="text" name="username" size="30" value="{{ user.user_name }}" style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            </dd>
+            <dt style="font-weight: bold; margin-bottom: 5px;">请输入新密码(不输入就是不修改):</dt>
+            <dd style="margin-bottom: 15px;">
+                <input type="password" name="password" size="30" style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            </dd>
+            <dt style="font-weight: bold; margin-bottom: 5px;">学院:</dt>
+            <dd style="margin-bottom: 15px;">
+                <input type="text" name="college" size="30" value="{{ user.college }}" style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            </dd>
+            <dt style="font-weight: bold; margin-bottom: 5px;">学号:</dt>
+            <dd style="margin-bottom: 15px;">
+                <input type="text" name="number" size="30" value="{{ user.num }}" style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            </dd>
+            <dt style="font-weight: bold; margin-bottom: 5px;">邮箱:</dt>
+            <dd style="margin-bottom: 15px;">
+                <input type="text" name="email" size="30" value="{{ user.email }}" style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            </dd>
+        </dl>
+        <div class="actions" style="text-align: right;">
+            <input type="submit" value="确定" style="padding: 10px 20px; background: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        </div>
+    </form>
+{% endblock %}

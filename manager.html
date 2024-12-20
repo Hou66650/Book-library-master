@@ -1,0 +1,167 @@
+{#{% extends 'layout.html' %}#}
+{% block title %}功能导航{% endblock %}
+{% block link %}
+<div class="nav-container">
+    <a href="{{ url_for('logout') }}" class="nav-link">注销 [{{ g.user }}]</a> |
+    <a href="{{ url_for('manager_books') }}" class="nav-link">图书管理</a> |
+    <a href="{{ url_for('manager_users') }}" class="nav-link">用户管理</a>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    body {
+        font-family: 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background: linear-gradient(135deg, #8a2be2, #dda0dd); /* 紫色渐变背景 */
+        color: #1d1d1f;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem 0;
+        background-color: #fff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        animation: fadeIn 1s ease;
+    }
+
+    .nav-link {
+        color: #8a2be2; /* 紫色 */
+        font-size: 16px;
+        margin-left: 1rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
+
+    .nav-link:hover {
+        color: #dda0dd; /* 浅紫色 */
+        background-color: rgba(138, 43, 226, 0.1); /* 浅紫色背景 */
+    }
+
+    .body {
+        margin: 2rem 0;
+    }
+
+    .welcome-container {
+        text-align: center;
+        animation: fadeIn 1s ease;
+    }
+
+    .welcome-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #fff; /* 紫色 */
+    }
+
+    .welcome-container p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        color: #fff; /* 白色 */
+    }
+
+    .features {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+        animation: fadeIn 1s ease;
+    }
+
+    .feature {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+        transform: scale(1.05);
+    }
+
+    .feature img {
+        width: 120px; /* 照片尺寸加大 */
+        height: 120px; /* 照片尺寸加大 */
+        margin-bottom: 1rem;
+    }
+
+    .feature h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #8a2be2; /* 紫色 */
+    }
+
+    .feature p {
+        color: #525255;
+    }
+
+    .footer {
+        background-color: #fff;
+        text-align: center;
+        padding: 1rem 0;
+        margin-top: 2rem;
+        box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .footer-container p {
+        color: #525255;
+    }
+
+    /* 动态效果 */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+{% endblock %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style1.css') }}">
+{% block content %}
+<div class="page">
+    <div class="body">
+        <div class="welcome-container">
+            <h2>欢迎使用我们的系统</h2>
+            <p>在这里，您可以管理图书和用户信息。</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+{#                <img 'static' src="images/1.png" alt="图书管理">#}
+                <img src="{{ url_for('static', filename='images/1.jpg') }}" alt="图书管理">
+                <h3>图书管理</h3>
+                <p>添加、编辑和删除图书信息。</p>
+            </div>
+            <div class="feature">
+                <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="用户管理">
+                <h3>用户管理</h3>
+                <p>添加、编辑和删除用户信息。</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

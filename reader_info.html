@@ -1,0 +1,91 @@
+{#{% extends "layout.html" %}#}
+{% block title %} 个人主页 {% endblock %}
+
+{% block link %}
+<div class="nav-links">
+    <a href="{{ url_for('reader') }}">返回</a> |
+    <a href="{{ url_for('reader_modify')}}">修改</a>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="profile-container">
+    <h2>用户信息</h2>
+    {% if user %}
+    <ul class="profile-list">
+        <li><strong>用户名:</strong> {{ user.user_name }}</li>
+        <li><strong>学院名:</strong> {{ user.college }}</li>
+        <li><strong>学号:</strong> {{ user.num }}</li>
+        <li><strong>邮箱:</strong> {{ user.email }}</li>
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #8A2BE2, #D8BFD8);
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+    }
+
+    .nav-links {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .nav-links a {
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 0 15px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #8A2BE2;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+        background-color: #6A5ACD;
+        transform: scale(1.1);
+    }
+
+    .profile-container {
+        background: #FFFFFF;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        text-align: center;
+    }
+
+    .profile-container h2 {
+        color: #8A2BE2;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .profile-list {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    .profile-list li {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #666;
+    }
+
+    .profile-list li strong {
+        color: #8A2BE2;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
